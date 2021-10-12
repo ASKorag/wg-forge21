@@ -1,0 +1,16 @@
+{
+  "name": "wg-forge21",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ASKorag/wg-forge21.git",
+  "author": "Andrey Serikov <AS.Korag@protonmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "pug": "^3.0.2",
+    "pug-cli": "^1.0.0-alpha6",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "start": "yarn pug -w -P src/index.pug -o dist & yarn tsc -w"
+  }
+}
