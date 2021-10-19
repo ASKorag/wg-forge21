@@ -2,6 +2,7 @@ const mainDiv = document.querySelector('#div') as Element
 
 console.log('Iterative BFS Traverse =>', iterBfsTraverse(mainDiv))
 console.log('Iterative Pre-Order Traverse =>', iterPreOrderTraverse(mainDiv))
+console.log('Iterative Post-Order Traverse =>', iterPostOrderTraverse(mainDiv))
 console.log('Recursive BFS Traverse =>', recBfsTraverse(mainDiv))
 console.log('Recursive Pre-Order Traverse =>', recPreOrderTraverse(mainDiv))
 console.log('Recursive Post-Order Traverse =>', recPostOrderTraverse(mainDiv))
@@ -19,7 +20,6 @@ function iterBfsTraverse(tree: Element): Array<Element> {
       queue.push(child)
       child = child.nextElementSibling
     }
-
   }
   return res
 }
@@ -35,6 +35,27 @@ function iterPreOrderTraverse(tree: Element): Array<Element> {
       stack.push(children.pop() as Element)
     }
   }
+  return res
+}
+
+function iterPostOrderTraverse(tree: Element): Array<Element> {
+  let res = []
+  const s1 = []
+  const s2: Array<Element> = []
+
+  s1.push(tree)
+
+  while (s1.length) {
+    const elem = s1.pop() as Element
+    s2.push(elem)
+    const children = getChildren(elem)
+    s1.push(...children)
+  }
+
+  while (s2.length) {
+    res.push(s2.pop() as Element)
+  }
+
   return res
 }
 
