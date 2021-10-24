@@ -3,9 +3,6 @@ module.exports = function pow(base: number, exp: number): number {
   if (exp === 0) {
     return 1
   }
-  if (exp === 1) {
-    return base
-  }
   if (exp > 0) {
     return base * pow(base, exp - 1)
   } else {
