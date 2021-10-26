@@ -1,15 +1,15 @@
-class Crypto {
+class Crypt {
   encode(pin: string, key: string) {
-    Crypto.#validateArgs('encode', pin, key)
+    Crypt.#validateArgs('encode', pin, key)
     const enc: string[] = []
-    for (let dig of pin) {
+    for (let dig of String(pin)) {
       enc.push(key[+dig])
     }
     return enc.join('')
   }
 
   decode(enc: string, key: string) {
-    Crypto.#validateArgs('decode', enc, key)
+    Crypt.#validateArgs('decode', enc, key)
     const pin: number[] = []
     for (let char of enc) {
       pin.push(key.indexOf(char))
@@ -47,4 +47,4 @@ class Crypto {
   }
 }
 
-module.exports = new Crypto()
+module.exports = new Crypt()
