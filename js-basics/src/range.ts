@@ -1,26 +1,16 @@
-module.exports = function range(from: number, to?: number, step?: number): number[] {
-  const result: number[] = []
-
-  if ((from < to && step < 0) || (from > to && step > 0)) {
-    return []
-  }
-
+module.exports = function range(from: number, to?: number, step = from < to ? 1 : -1): number[] {
   if (to === undefined) {
-    for (let i = 0; i < from; i++) {
-      result.push(i)
-    }
+    return from < 0 ? [] : Array.from(Array(from), (d, index) => index)
   } else {
-    if (step === undefined) {
-      step = from < to ? 1 : -1
+    if ((from < to && step < 0) || (from > to && step > 0)) {
+      return []
     }
-    let diff = from < to ? to - from : from - to
-    let value = from
-    while(diff > 0) {
-      result.push(value)
-      value += step
-      diff -= Math.abs(step)
+    const diff = Math.max(from, to) - Math.min(from, to)
+    if (diff < step) {
+      return [from]
+    } else {
+      const amount = Math.ceil(diff / Math.abs(step))
+      return Array.from(Array(amount), (d, index) => index === 0 ? from : from += step)
     }
   }
-
-  return result
 }
