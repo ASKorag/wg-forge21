@@ -1,4 +1,6 @@
-const pow = require('../dist/iterativePow.js')
+// const pow = require('../dist/iterativePow.js')
+// const pow = require('../dist/recursivePow.js')
+const pow = require('../dist/fastRecursivePow.js')
 
 test('Run without arguments', () => {
     expect(() => {
