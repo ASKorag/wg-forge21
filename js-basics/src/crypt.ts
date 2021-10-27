@@ -26,7 +26,7 @@ class Crypt {
     }
     const validKey = /^[a-zA-Z0-9]{10}$/
     if (!validKey.test(key)) {
-      throw new Error('Key must be include only latin symbols or digital')
+      throw new Error('Key must be contain only latin symbols or numbers')
     }
     if (new Set(key).size !== key.length) {
       throw new Error('Key symbols must not be repeated')
@@ -34,7 +34,7 @@ class Crypt {
     if (methodType === 'encode') {
       const validPin = /^\d*$/
       if (!validPin.test(str)) {
-        throw new Error('Pin must be include only digital')
+        throw new Error('Pin must be contain only numbers')
       }
     }
     if (methodType === 'decode') {
