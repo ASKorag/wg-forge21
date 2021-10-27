@@ -1,0 +1,1 @@
+const pipe = require('../dist/composition.js')

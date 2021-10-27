@@ -1,0 +1,1 @@
+const curry = require('../dist/currying.js')

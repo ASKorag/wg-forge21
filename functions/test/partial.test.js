@@ -1,0 +1,1 @@
+const partial = require('../dist/partial.js')

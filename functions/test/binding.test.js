@@ -1,0 +1,1 @@
+const funcUtil = require('../dist/binding.js')
