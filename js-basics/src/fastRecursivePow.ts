@@ -4,9 +4,13 @@ module.exports = function pow(base: number, exp: number): number {
     return 1
   }
   if (exp > 0) {
-    return exp % 2 === 0 ? pow(base, exp / 2) * pow(base, exp / 2) : base * pow(base, exp - 1)
+    return exp % 2 === 0
+      ? pow(base * base, exp / 2)
+      : base * pow(base * base, (exp - 1) / 2)
   } else {
-    return exp % 2 === 0 ? pow(base, exp / 2) * pow(base, exp / 2) : 1 / base * pow(base, exp + 1)
+    return exp % 2 === 0
+      ? pow(base * base, exp / 2)
+      : 1 / base * pow(base * base, (exp + 1) / 2)
   }
 }
 
