@@ -1,16 +1,11 @@
-module.exports = function curry(func: TFunc): TFunc {
+module.exports = function curry(func) {
   if (typeof func !== 'function') {
     throw new TypeError('Argument must be a function')
   }
-
-  return function curried(...args) {
+  return function curriedFunc(...args) {
     if (args.length >= func.length) {
       return func(...args)
     }
-    return function (...rest) {
-      return curried.apply(this, [...args, ...rest])
-    }
+    return (...rest) => curriedFunc(...args, ...rest)
   }
 }
-
-type TFunc = (...args: any[]) => any
