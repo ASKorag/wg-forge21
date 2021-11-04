@@ -1,11 +1,8 @@
 module.exports = {
   bind(func: TFunc, context: any) {
+    this._validateFunc(func)
     var args = this._getArgs(arguments, 2)
     var savedThis = this
-    if (context !== null) {
-      var uuid = this._getUUID()
-      context[uuid] = func
-    }
     return function () {
       var extraArgs = savedThis._getArgs(arguments)
       return savedThis.apply(func, context, args.concat(extraArgs))
@@ -18,9 +15,7 @@ module.exports = {
   },
 
   apply(func: TFunc, context: any, args: any[]) {
-    if (args === undefined) {
-      args = []
-    }
+    this._validateFunc(func)
     var argsStr = this._getArgsStr(args, 'args')
     if (typeof context === 'object' && context !== null) {
       var uuid = this._getUUID()
@@ -34,6 +29,9 @@ module.exports = {
   },
 
   _getArgsStr(args: any[], name: string): string {
+    if (args === undefined) {
+      args = []
+    }
     var result = []
     for (var i = 0; i < args.length; i++) {
       result.push(name + '[' + i + ']')
@@ -54,6 +52,12 @@ module.exports = {
 
   _getUUID() {
     return Math.random().toString(36).substr(2, 10)
+  },
+
+  _validateFunc(func: TFunc) {
+    if (typeof func !== 'function') {
+      throw new TypeError('The first argument must be a function')
+    }
   }
 }
 
