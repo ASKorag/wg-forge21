@@ -1,30 +1,34 @@
 module.exports = {
-  bind(func: Func, context: any) {
+  bind(func: TFunc, context: any) {
     var args = this._getArgs(arguments, 2)
     var savedThis = this
+    if (context !== null) {
+      var uuid = this._getUUID()
+      context[uuid] = func
+    }
     return function () {
       var extraArgs = savedThis._getArgs(arguments)
       return savedThis.apply(func, context, args.concat(extraArgs))
     }
   },
 
-  call(func: Func, context: any) {
+  call(func: TFunc, context: any) {
     var args = this._getArgs(arguments, 2)
     return this.apply(func, context, args)
   },
 
-  apply(func: Func, context: any, args: any[]) {
+  apply(func: TFunc, context: any, args: any[]) {
     if (args === undefined) {
       args = []
     }
-    var stringArgs = this._getArgsStr(args, 'args')
+    var argsStr = this._getArgsStr(args, 'args')
     if (typeof context === 'object' && context !== null) {
-      var uuid = Date.now()
+      var uuid = this._getUUID()
       context[uuid] = func
-      var result = eval('context[uuid](' + stringArgs + ')')
+      var result = eval('context[uuid](' + argsStr + ')')
       delete context[uuid]
     } else {
-      var result = eval('func(' + stringArgs + ')')
+      var result = eval('func(' + argsStr + ')')
     }
     return result
   },
@@ -46,8 +50,12 @@ module.exports = {
       argsArr.push(args[i])
     }
     return argsArr
+  },
+
+  _getUUID() {
+    return Math.random().toString(36).substr(2, 10)
   }
 }
 
 
-type Func = (...args: any[]) => any
+type TFunc = (...args: any[]) => any

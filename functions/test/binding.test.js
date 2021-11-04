@@ -4,12 +4,6 @@ const user = {
   name: 'Andrey'
 }
 
-const person = {
-  getName() {
-    return this.name
-  }
-}
-
 const age = 26
 const sex = 'male'
 
@@ -25,19 +19,16 @@ test('Check apply method', () => {
   expect(funcUtil.apply(showInfo, 15)).toBe(showInfo.apply(15))
   expect(funcUtil.apply(showInfo, true)).toBe(showInfo.apply(true))
   expect(funcUtil.apply(showInfo, undefined)).toBe(showInfo.apply(undefined))
-  expect(funcUtil.apply(person.getName, user)).toBe(person.getName.apply(user))
 })
 
 test('Check call method', () => {
   expect(funcUtil.call(showInfo, user, age, sex)).toBe(showInfo.call(user, age, sex))
   expect(funcUtil.call(showInfo, user)).toBe(showInfo.call(user))
-  expect(funcUtil.call(person.getName, user)).toBe(person.getName.call(user))
   expect(funcUtil.call(showInfo, true)).toBe(showInfo.call(true))
   expect(funcUtil.call(showInfo, 'true')).toBe(showInfo.call('true'))
   expect(funcUtil.call(showInfo, 15)).toBe(showInfo.call(15))
   expect(funcUtil.call(showInfo, undefined)).toBe(showInfo.call(undefined))
   expect(funcUtil.call(showInfo, null)).toBe(showInfo.call(null))
-
 })
 
 test('Check bind method', () => {
