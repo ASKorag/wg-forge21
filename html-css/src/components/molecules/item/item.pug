@@ -1,0 +1,12 @@
+mixin item(item)
+  - var {type, href, price, name, country, sign, image} = item
+  a(href=href)
+    div
+      img
+      img(src=image alt=name)
+      if (type === 'vehicle')
+        span #{country} #{sign} #{name}
+      else
+        span= name
+      span $ #{price}
+      button Purchase
