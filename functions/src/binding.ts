@@ -1,20 +1,20 @@
 module.exports = {
-  bind(func: TFunc, context: any) {
+  bind(func, context) {
     this._validateFunc(func)
     var args = this._getArgs(arguments, 2)
     var savedThis = this
     return function () {
-      var extraArgs = savedThis._getArgs(arguments)
-      return savedThis.apply(func, context, args.concat(extraArgs))
+      var restArgs = savedThis._getArgs(arguments)
+      return savedThis.apply(func, context, args.concat(restArgs))
     }
   },
 
-  call(func: TFunc, context: any) {
+  call(func, context) {
     var args = this._getArgs(arguments, 2)
     return this.apply(func, context, args)
   },
 
-  apply(func: TFunc, context: any, args: any[]) {
+  apply(func, context, args) {
     this._validateFunc(func)
     var argsStr = this._getArgsStr(args, 'args')
     if (typeof context === 'object' && context !== null) {
@@ -54,12 +54,9 @@ module.exports = {
     return Math.random().toString(36).substr(2, 10)
   },
 
-  _validateFunc(func: TFunc) {
+  _validateFunc(func) {
     if (typeof func !== 'function') {
       throw new TypeError('The first argument must be a function')
     }
   }
 }
-
-
-type TFunc = (...args: any[]) => any

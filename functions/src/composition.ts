@@ -1,4 +1,5 @@
-module.exports = (funcArr: Array<TFunc>): TBasic => arg => funcArr.reduce((res, func) => func(res), arg)
-
-type TBasic = (arg: any) => any
-type TFunc = (...args: any[]) => (arg: any) => any
+module.exports = function pipe(funcArr) {
+  return function (arg) {
+    return funcArr.reduce((result, func) => func(result), arg)
+  }
+}

@@ -1,6 +1,6 @@
-module.exports = function partial(func: (...rest: any[]) => any, ...args: any[]) {
+module.exports = function partial(func, ...args) {
   if (typeof func !== 'function') {
     throw new TypeError('First argument must be a function')
   }
-  return (...rest: any[]) => func(...args, ...rest)
+  return (...rest) => func(...args, ...rest)
 }

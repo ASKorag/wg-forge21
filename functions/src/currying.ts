@@ -3,9 +3,6 @@ module.exports = function curry(func) {
     throw new TypeError('Argument must be a function')
   }
   return function curriedFunc(...args) {
-    if (args.length >= func.length) {
-      return func(...args)
-    }
-    return (...rest) => curriedFunc(...args, ...rest)
+    return args.length >= func.length ? func(...args) : (...rest) => curriedFunc(...args, ...rest)
   }
 }
