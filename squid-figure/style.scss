@@ -1,0 +1,58 @@
+$DIAM: 100px;
+$THICK: 6px;
+
+body {
+  margin: 0;
+}
+
+.wrap {
+  position: relative;
+  background-color: antiquewhite;
+  height: $DIAM * 5;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 100%);
+  width: $DIAM;
+  height: $DIAM;
+  border-radius: 50%;
+  border: $THICK solid red;
+  animation: bounce 3s linear infinite;
+}
+
+@keyframes bounce {
+  0% {
+    bottom: 100%;
+    transform: translate(-50%, 100%);
+  }
+  25% {
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    height: $DIAM;
+    width: $DIAM;
+  }
+  30% {
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    height: 0.5 * $DIAM;
+    width: 1.5 * $DIAM;
+  }
+  35% {
+    bottom: 0;
+    transform: translate(-50%, 0%);
+    height: $DIAM;
+    width: $DIAM;
+  }
+  70% {
+    bottom: 100%;
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    bottom: 100%;
+    transform: translate(-50%, 100%);
+  }
+
+}
