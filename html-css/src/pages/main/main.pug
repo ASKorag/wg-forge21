@@ -1,25 +1,74 @@
+include ../../components/molecules/tab-panel/tab-panel
 include ../../components/molecules/item/item
 
 -
   var items = [
-    {type: 'vehicle', name: 'ИС-6', country: 'ussr', sing: '3', price: '47.99', image: 'is-6'},
-    {type: 'vehicle', name: 'VIII Lowe', country: 'norway', sing: '3', price: '42.99', image: 'lowe'},
-    {name: 'Extension Pack', price: '28.99', image: 'extension'},
-    {name: 'Wot Premium Account: 3 Days', price: '2.99', image: 'premium-3'},
-    {type: 'vehicle', name: 'VII M56 Scorpion', country: 'usa', sing: '0', price: '24.99', image: 'm56-scorpion'},
-    {type: 'vehicle', name: 'VIII FV4202', country: 'britain', sing: '2', price: '40.99', image: 'fv4202'},
+    {
+      type: 'vehicle',
+      name: 'ИС-6',
+      country: 'ussr',
+      tankType: 'heavy',
+      price: '47.99',
+      image: 'is-6',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19045/'
+    },
+    {
+      type: 'vehicle',
+      name: 'VIII Lowe',
+      country: 'norway',
+      tankType: 'heavy',
+      price: '42.99',
+      image: 'lowe',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19044/'
+    },
+    {name: 'Extension Pack', price: '28.99', image: 'extension', href: '#'},
+    {
+      name: 'Wot Premium Account: 3 Days',
+      price: '2.99',
+      image: 'premium-3',
+      href: 'https://eu.wargaming.net/shop/wot/premium/ps_p_13629/'
+    },
+    {
+      type: 'vehicle',
+      name: 'VII M56 Scorpion',
+      country: 'usa',
+      tankType: 'destroyer',
+      price: '24.99',
+      image: 'm56-scorpion',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19057/'
+    },
+    {
+      type: 'vehicle',
+      name: 'VIII FV4202',
+      country: 'britain',
+      tankType: 'medium',
+      price: '40.99',
+      image: 'fv4202',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19056/'
+    },
     {
       type: 'vehicle',
       name: 'VIII M4A1 Revalorise',
       country: 'france',
-      sing: '2',
+      tankType: 'medium',
       price: '35.99',
-      image: 'm4a1-revalorise'
+      image: 'm4a1-revalorise',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19055/'
     },
-    {name: '10 personal reserves: +15% xp limited edition', price: '29.99', image: 'reserves'},
-    {name: 'gold: 25.000', price: '99.99', image: 'gold'},
-    {type: 'vehicle', name: 'VIII T92', country: 'usa', sing: '1', price: '36.99', image: 't92'},
+    {name: '10 personal reserves: +15% xp limited edition', price: '29.99', image: 'reserves', href: '#'},
+    {name: 'gold: 25.000', price: '99.99', image: 'gold', href: 'https://eu.wargaming.net/shop/wot/gold/ps_p_128/'},
+    {
+      type: 'vehicle',
+      name: 'VIII T92',
+      country: 'usa',
+      tankType: 'light',
+      price: '36.99',
+      image: 't92',
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/20189/'
+    },
   ]
+
+- var tabs = ['all', 'vehicles', 'gold', 'premium account']
 
 doctype html
 html(lang='en')
@@ -30,9 +79,11 @@ html(lang='en')
     include ../../components/section/header/header
     main
       div
-        section
-          img(src='wot-logo' alt='wot logo')
-          include ../../components/molecules/tab-panel/tab-panel
-        section
+        div
+          a(href='https://worldoftanks.ru/')
+          +tab-panel(tabs)
+      div
+        ul
           each item in items
-            +item(item)
+            li
+              +item(item)
