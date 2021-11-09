@@ -1,5 +1,7 @@
 $DIAM: 100px;
-$THICK: 6px;
+$THICK: 5px;
+$LINE_LENGTH: 3.14 * ($DIAM - $THICK);
+$ANIM: 3s linear infinite;
 
 body {
   margin: 0;
@@ -20,7 +22,7 @@ body {
   height: $DIAM;
   border-radius: 50%;
   border: $THICK solid red;
-  animation: bounce 3s linear infinite;
+  animation: bounce $ANIM;
 }
 
 @keyframes bounce {
@@ -55,4 +57,53 @@ body {
     transform: translate(-50%, 100%);
   }
 
+}
+
+.wrap2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: antiquewhite;
+  height: 200px;
+}
+
+.center {
+  width: 2*$DIAM;
+  height: 100%;
+  background-color: #12386d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg {
+  display: none;
+}
+
+.loader {
+  fill: none;
+  stroke: red;
+  stroke-width: $THICK;
+  stroke-linecap: round;
+  stroke-dasharray: $LINE_LENGTH;
+  animation: line $ANIM, spin $ANIM;
+  transform-origin: center;
+}
+
+@keyframes line {
+  0% {
+    stroke-dashoffset: ($LINE_LENGTH * 2);
+  }
+  100% {
+    stroke-dashoffset: ($LINE_LENGTH * 0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
