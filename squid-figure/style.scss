@@ -1,109 +1,90 @@
-$DIAM: 100px;
-$THICK: 5px;
-$LINE_LENGTH: 3.14 * ($DIAM - $THICK);
-$ANIM: 3s linear infinite;
+$BLOCK_SIZE: 400px;
+$BLOCK_BORDER_RADIUS: 5px;
+$DIAM: 350px;
+$THICK: 15px;
+
+@mixin centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin animation($name) {
+  animation: $name 6s ease-in-out infinite both;
+}
+
+@mixin circle($diam) {
+  width: $diam;
+  height: $diam;
+  border-radius: 50%;
+}
 
 body {
+  @include centering;
   margin: 0;
+  height: 100vh;
 }
 
 .wrap {
+  @include centering;
   position: relative;
-  background-color: antiquewhite;
-  height: $DIAM * 5;
+  width: $BLOCK_SIZE;
+  height: $BLOCK_SIZE;
+  border-radius: $BLOCK_BORDER_RADIUS;
+  margin: 0 auto;
+  background-color: lightseagreen;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  overflow: hidden;
 }
 
 .circle {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, 100%);
-  width: $DIAM;
-  height: $DIAM;
-  border-radius: 50%;
-  border: $THICK solid red;
-  animation: bounce $ANIM;
+  @include centering;
+  @include circle($DIAM);
+  background-color: rgb(150, 150, 150);
+  border: $THICK solid rgb(170, 170, 170);
+  @include animation(move);
 }
 
-@keyframes bounce {
+@keyframes move {
   0% {
-    bottom: 100%;
-    transform: translate(-50%, 100%);
+    transform: translate3d(-$BLOCK_SIZE, 0, 0);
   }
-  25% {
-    bottom: 0;
-    transform: translate(-50%, 0%);
-    height: $DIAM;
-    width: $DIAM;
-  }
-  30% {
-    bottom: 0;
-    transform: translate(-50%, 0%);
-    height: 0.5 * $DIAM;
-    width: 1.5 * $DIAM;
-  }
-  35% {
-    bottom: 0;
-    transform: translate(-50%, 0%);
-    height: $DIAM;
-    width: $DIAM;
-  }
-  70% {
-    bottom: 100%;
-    transform: translate(-50%, 100%);
+  25%, 75% {
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    bottom: 100%;
-    transform: translate(-50%, 100%);
-  }
-
-}
-
-.wrap2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: antiquewhite;
-  height: 200px;
-}
-
-.center {
-  width: 2*$DIAM;
-  height: 100%;
-  background-color: #12386d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bg {
-  display: none;
-}
-
-.loader {
-  fill: none;
-  stroke: red;
-  stroke-width: $THICK;
-  stroke-linecap: round;
-  stroke-dasharray: $LINE_LENGTH;
-  animation: line $ANIM, spin $ANIM;
-  transform-origin: center;
-}
-
-@keyframes line {
-  0% {
-    stroke-dashoffset: ($LINE_LENGTH * 2);
-  }
-  100% {
-    stroke-dashoffset: ($LINE_LENGTH * 0);
+    transform: translate3d($BLOCK_SIZE, 0, 0);
   }
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
+.sugar {
+  @include centering;
+  @include circle($DIAM);
+  background-color: darkgoldenrod;
+  @include animation(fill);
+}
+
+@keyframes fill {
+  0%, 25% {
+    transform: scale(0);
   }
-  100% {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(1);
+  }
+}
+
+.figure {
+  @include circle(200px);
+  border: 3px solid rgba(0, 0, 0, .3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .3), inset 0 0 5px rgba(0, 0, 0, .3);
+  @include animation(cut);
+}
+
+@keyframes cut {
+  0%, 50% {
+    filter: opacity(0);
+  }
+  75% {
+    filter: opacity(1);
   }
 }
