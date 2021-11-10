@@ -1,6 +1,6 @@
 $BLOCK_SIZE: 400px;
 $BLOCK_BORDER_RADIUS: 5px;
-$DIAM: 350px;
+$DIAM: 250px;
 $THICK: 15px;
 
 @mixin centering {
@@ -37,11 +37,36 @@ body {
   overflow: hidden;
 }
 
+.transporter {
+  @include centering;
+  box-sizing: border-box;
+  height: 350px;
+  width: 100%;
+  background: linear-gradient(to right, darkgray, grey);
+  background-size: 300% 100%;
+  border-top: 15px solid dimgray;
+  border-bottom: 15px solid dimgray;
+  @include animation(colorize);
+}
+
+@keyframes colorize {
+  0% {
+    background-position: 100%;
+  }
+  25%, 75% {
+    background-position: 50%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
 .circle {
   @include centering;
   @include circle($DIAM);
   background-color: rgb(150, 150, 150);
-  border: $THICK solid rgb(170, 170, 170);
+  border: 10px solid rgb(170, 170, 170);
+  box-shadow: 0 0 10px rgb(0, 0, 0, .5);
   @include animation(move);
 }
 
@@ -74,9 +99,9 @@ body {
 }
 
 .figure {
+  box-sizing: border-box;
   @include circle(200px);
-  border: 3px solid rgba(0, 0, 0, .3);
-  box-shadow: 0 0 5px rgba(0, 0, 0, .3), inset 0 0 5px rgba(0, 0, 0, .3);
+  border: 15px solid darkred;
   @include animation(cut);
 }
 
