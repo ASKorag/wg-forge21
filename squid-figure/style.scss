@@ -1,8 +1,28 @@
+//Sizing
 $BLOCK_SIZE: 400px;
 $BLOCK_BORDER_RADIUS: 5px;
-$DIAM: 250px;
-$THICK: 15px;
 
+$SUGAR_DIAM: 250px;
+
+$JAR_THICK: 7.5px;
+$LID_DIAM: $SUGAR_DIAM + 4 * $JAR_THICK;
+
+$RING_DIAM: 200px;
+$RING_LENGTH: 3.14 * $RING_DIAM;
+$RING_THICK: 15px;
+
+//Colors
+$BLOCK_COLOR: lightseagreen;
+
+$TRANS_FIRST_COLOR: #555555;
+$TRANS_SEC_COLOR: #5a5a5a;
+$TRANS_GRAD: to right, $TRANS_FIRST_COLOR, $TRANS_FIRST_COLOR 50px, $TRANS_SEC_COLOR 50px, $TRANS_SEC_COLOR 100px;
+
+$JAR_COLOR: #aaaaaa;
+
+$SUGAR_COLOR: darkgoldenrod;
+
+//Mixins
 @mixin centering {
   display: flex;
   justify-content: center;
@@ -10,13 +30,21 @@ $THICK: 15px;
 }
 
 @mixin animation($name) {
-  animation: $name 6s ease-in-out infinite both;
+  animation: $name 7.5s ease-in-out infinite both;
 }
 
 @mixin circle($diam) {
   width: $diam;
   height: $diam;
   border-radius: 50%;
+}
+
+@mixin lid() {
+  @include circle($LID_DIAM);
+  position: absolute;
+  content: '';
+  box-shadow: 0 0 10px rgb(0, 0, 0, .5);
+  background: repeating-linear-gradient(to right, purple -10px, purple 200px, orange 200px, orange 240px);
 }
 
 body {
@@ -27,12 +55,11 @@ body {
 
 .wrap {
   @include centering;
-  position: relative;
   width: $BLOCK_SIZE;
   height: $BLOCK_SIZE;
   border-radius: $BLOCK_BORDER_RADIUS;
   margin: 0 auto;
-  background-color: lightseagreen;
+  background-color: $BLOCK_COLOR;
   box-shadow: 0 0 10px rgba(0, 0, 0, .3);
   overflow: hidden;
 }
@@ -42,74 +69,98 @@ body {
   box-sizing: border-box;
   height: 350px;
   width: 100%;
-  background: linear-gradient(to right, darkgray, grey);
-  background-size: 300% 100%;
-  border-top: 15px solid dimgray;
-  border-bottom: 15px solid dimgray;
-  @include animation(colorize);
+  background: repeating-linear-gradient($TRANS_GRAD);
+  background-size: 200% 100%;
+  border-top: 15px solid $JAR_COLOR;
+  border-bottom: 15px solid $JAR_COLOR;
+  @include animation(transp-move);
 }
 
-@keyframes colorize {
+@keyframes transp-move {
   0% {
+    background-position: 200%;
+  }
+  20%, 100% {
     background-position: 100%;
   }
-  25%, 75% {
-    background-position: 50%;
+}
+
+.jar {
+  @include centering;
+  @include circle($SUGAR_DIAM);
+  background-color: rgb(150, 150, 150);
+  border: $JAR_THICK solid $JAR_COLOR;
+  box-shadow: 0 0 5px rgb(0, 0, 0, .5), inset 0 0 10px rgb(0, 0, 0, .5);
+  @include animation(sugar-move);
+
+  &:before {
+    @include lid;
+    transform: scale(0.97);
+    left: $BLOCK_SIZE - 2 * $JAR_THICK;
+  }
+
+  &:after {
+    @include lid;
+    @include animation(lid-move);
+  }
+}
+
+@keyframes lid-move {
+  0%, 60% {
+    transform: translate3d(0, -$BLOCK_SIZE, 0);
+  }
+  70% {
+    transform: translate3d(0, 0, 0) rotate(0);
   }
   100% {
-    background-position: 0%;
+    transform: translate3d(0, 0, 0) rotate(720deg) scale(0.97);
   }
 }
 
-.circle {
-  @include centering;
-  @include circle($DIAM);
-  background-color: rgb(150, 150, 150);
-  border: 10px solid rgb(170, 170, 170);
-  box-shadow: 0 0 10px rgb(0, 0, 0, .5);
-  @include animation(move);
-}
 
-@keyframes move {
+@keyframes sugar-move {
   0% {
     transform: translate3d(-$BLOCK_SIZE, 0, 0);
   }
-  25%, 75% {
+  20%, 100% {
     transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d($BLOCK_SIZE, 0, 0);
   }
 }
 
 .sugar {
   @include centering;
-  @include circle($DIAM);
-  background-color: darkgoldenrod;
+  @include circle($SUGAR_DIAM);
+  background-color: $SUGAR_COLOR;
   @include animation(fill);
 }
 
 @keyframes fill {
-  0%, 25% {
+  0%, 20% {
     transform: scale(0);
   }
-  50% {
+  40% {
     transform: scale(1);
   }
 }
 
-.figure {
-  box-sizing: border-box;
-  @include circle(200px);
-  border: 15px solid darkred;
-  @include animation(cut);
+.ring {
+  fill: none;
+  stroke: darkred;
+  stroke-width: $RING_THICK;
+  stroke-linecap: round;
+  @include animation(ring-draw);
 }
 
-@keyframes cut {
-  0%, 50% {
+@keyframes ring-draw {
+  0%, 40% {
     filter: opacity(0);
+    stroke-dasharray: 0 $RING_LENGTH;
   }
-  75% {
+  45% {
     filter: opacity(1);
+    stroke-dasharray: 0 $RING_LENGTH;
+  }
+  60% {
+    stroke-dasharray: $RING_LENGTH $RING_LENGTH;
   }
 }
