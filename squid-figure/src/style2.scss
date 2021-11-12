@@ -1,0 +1,113 @@
+//Sizing
+$BLOCK_SIZE: 400px;
+$BLOCK_BORDER_RADIUS: 5px;
+
+$RING_DIAM: 180px;
+$RING_LENGTH: 3.14 * $RING_DIAM;
+$RING_THICK: $RING_DIAM / 6;
+
+$LINES_AMOUNT: 36;
+
+//Colors
+$BLOCK_COLOR: lightseagreen;
+
+$RING_COLOR: darkred;
+
+//Mixins
+@mixin centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin animation($name) {
+  animation: $name 7.5s ease-in-out infinite both;
+}
+
+@mixin circle($diam) {
+  width: $diam;
+  height: $diam;
+  border-radius: 50%;
+}
+
+body {
+  @include centering;
+  margin: 0;
+  height: 100vh;
+}
+
+.wrap {
+  @include centering;
+  width: $BLOCK_SIZE;
+  height: $BLOCK_SIZE;
+  border-radius: $BLOCK_BORDER_RADIUS;
+  margin: 0 auto;
+  background-color: $BLOCK_COLOR;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+  overflow: hidden;
+}
+
+.center {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  @include centering;
+}
+
+.b {
+  position: absolute;
+  @include circle($RING_THICK);
+  background-color: white;
+}
+
+@for $i from 0 through $LINES_AMOUNT - 1 {
+  $step: 360 / $LINES_AMOUNT;
+
+  .b#{$i + 1} {
+    animation: block-#{$i+1} 10s ease-in-out infinite both;
+  }
+
+  @keyframes block-#{$i+1} {
+    0% {
+      transform: scale(0);
+    }
+    10% {
+      transform: scale(1);
+    }
+    20% {
+      transform: rotate(($i * $step)+deg) translate(0, -170px) scale(.5);
+      border-radius: 50%;
+    }
+    30% {
+      transform: rotate(($i * $step)+deg) translate(0, -170px) scale(.7, .1);
+      border-radius: 0;
+    }
+    40% {
+      transform: rotate(($i * $step)+deg) translate(0, -60px) scale(.1, 2);
+      border-radius: 0;
+
+    }
+    50% {
+      transform: rotate(($i * $step)+deg) translate(0, -140px) scale(.5);
+      background-color: white;
+      border-radius: 50%;
+    }
+    60% {
+      transform: rotate(($i * $step + 1 * 360)+deg) translate(0, -140px) scale(.5);
+      background-color: $RING_COLOR;
+      border-radius: 50%;
+    }
+    70% {
+      transform: rotate(($i * $step + 1 * 360)+deg) translate(0, -140px) scale(.7);
+      border-radius: 4px;
+    }
+    80%,90% {
+      transform: rotate(($i * $step + 3 * 360)+deg) translate(0, -140px) scale(1);
+    }
+    100% {
+      transform: rotate(($i * $step + 4 * 360)+deg) translate(0, 0) scale(0);
+      background-color: $RING_COLOR;
+      border-radius: 4px;
+    }
+  }
+}
