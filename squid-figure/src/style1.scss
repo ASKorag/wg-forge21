@@ -1,27 +1,20 @@
 //Sizing
 $BLOCK_SIZE: 400px;
 $BLOCK_BORDER_RADIUS: 5px;
-
 $SUGAR_DIAM: 250px;
-
 $JAR_THICK: 7.5px;
 $LID_DIAM: $SUGAR_DIAM + 4 * $JAR_THICK;
-
 $RING_DIAM: 180px;
 $RING_LENGTH: 3.14 * $RING_DIAM;
 $RING_THICK: $RING_DIAM / 6;
 
 //Colors
 $BLOCK_COLOR: lightseagreen;
-
 $TRANS_FIRST_COLOR: #555555;
 $TRANS_SEC_COLOR: #5a5a5a;
 $TRANS_GRAD: to right, $TRANS_FIRST_COLOR, $TRANS_FIRST_COLOR 50px, $TRANS_SEC_COLOR 50px, $TRANS_SEC_COLOR 100px;
-
 $JAR_COLOR: #aaaaaa;
-
-$RING_COLOR: darkred;
-
+$RING_COLOR: #e30202;
 $SUGAR_COLOR: darkgoldenrod;
 
 //Mixins
@@ -75,10 +68,10 @@ body {
   background-size: 200% 100%;
   border-top: 15px solid $JAR_COLOR;
   border-bottom: 15px solid $JAR_COLOR;
-  @include animation(transp-move);
+  @include animation(transporter);
 }
 
-@keyframes transp-move {
+@keyframes transporter {
   0% {
     background-position: 200%;
   }
@@ -93,7 +86,7 @@ body {
   background-color: rgb(150, 150, 150);
   border: $JAR_THICK solid $JAR_COLOR;
   box-shadow: 0 0 5px rgb(0, 0, 0, .5), inset 0 0 10px rgb(0, 0, 0, .5);
-  @include animation(sugar-move);
+  @include animation(jar);
 
   &:before {
     @include lid;
@@ -104,6 +97,15 @@ body {
   &:after {
     @include lid;
     @include animation(lid-move);
+  }
+}
+
+@keyframes jar {
+  0% {
+    transform: translate3d(-$BLOCK_SIZE, 0, 0);
+  }
+  20%, 100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -119,24 +121,14 @@ body {
   }
 }
 
-
-@keyframes sugar-move {
-  0% {
-    transform: translate3d(-$BLOCK_SIZE, 0, 0);
-  }
-  20%, 100% {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
 .sugar {
   @include centering;
   @include circle($SUGAR_DIAM);
   background-color: $SUGAR_COLOR;
-  @include animation(fill);
+  @include animation(sugar);
 }
 
-@keyframes fill {
+@keyframes sugar {
   0%, 20% {
     transform: scale(0);
   }
@@ -150,10 +142,10 @@ body {
   stroke: $RING_COLOR;
   stroke-width: $RING_THICK;
   stroke-linecap: round;
-  @include animation(ring-draw);
+  @include animation(ring);
 }
 
-@keyframes ring-draw {
+@keyframes ring {
   0%, 40% {
     filter: opacity(0);
     stroke-dasharray: 0 $RING_LENGTH;

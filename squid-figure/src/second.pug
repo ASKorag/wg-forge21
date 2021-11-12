@@ -6,7 +6,6 @@ html(lang='en')
     link(rel='stylesheet' href='./style2.css')
   body
     .wrap
-      .center
-        - var i = 0
-          while i < 36
-            div(class=`b b${++i}`)
+      - var i = 0
+      while i < 24
+        div(class=`item item-${++i}`)
