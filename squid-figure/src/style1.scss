@@ -7,9 +7,9 @@ $SUGAR_DIAM: 250px;
 $JAR_THICK: 7.5px;
 $LID_DIAM: $SUGAR_DIAM + 4 * $JAR_THICK;
 
-$RING_DIAM: 200px;
+$RING_DIAM: 180px;
 $RING_LENGTH: 3.14 * $RING_DIAM;
-$RING_THICK: 15px;
+$RING_THICK: $RING_DIAM / 6;
 
 //Colors
 $BLOCK_COLOR: lightseagreen;
@@ -19,6 +19,8 @@ $TRANS_SEC_COLOR: #5a5a5a;
 $TRANS_GRAD: to right, $TRANS_FIRST_COLOR, $TRANS_FIRST_COLOR 50px, $TRANS_SEC_COLOR 50px, $TRANS_SEC_COLOR 100px;
 
 $JAR_COLOR: #aaaaaa;
+
+$RING_COLOR: darkred;
 
 $SUGAR_COLOR: darkgoldenrod;
 
@@ -145,7 +147,7 @@ body {
 
 .ring {
   fill: none;
-  stroke: darkred;
+  stroke: $RING_COLOR;
   stroke-width: $RING_THICK;
   stroke-linecap: round;
   @include animation(ring-draw);
