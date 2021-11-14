@@ -1,0 +1,12 @@
+mixin item(item)
+  - var {type, href, price, name, country, tankType, image} = item
+  a(href=href)
+    img(src=image alt=image)
+    h2
+      if (type === 'vehicle')
+        span= country
+        span= tankType === 'destroyer' ? ' tank destroyer' : ` ${tankType} tank`
+      span= ` ${name}`
+    p $ #{price}
+  button Purchase
+  button Add to wishlist
