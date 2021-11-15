@@ -30,7 +30,8 @@ export default defineConfig({
       '@images': resolve(src, 'assets/images'),
       '@fonts': resolve(src, 'assets/fonts'),
 
-      '@scss': resolve(src, 'scss')
+      '@scss-utils': resolve(src, 'scss/utils'),
+      '@scss-vars': resolve(src, 'scss/variables')
     }
   },
   plugins: [PugPlugin({localImports: true})],
