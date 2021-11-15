@@ -1,12 +1,13 @@
 mixin item(item)
-  - var {type, href, price, name, country, tankType, image} = item
-  a(href=href)
-    img(src=image alt=image)
-    h2
+  - var {type, href, price, name, country, tankType, image, size} = item
+  a(class=[attributes.class, size === 'big' ? `${attributes.class}--big` : ''] href=href).item._link
+    img(src=image alt=image).item__img
+    h2.item__descr
       if (type === 'vehicle')
-        span= country
-        span= tankType === 'destroyer' ? ' tank destroyer' : ` ${tankType} tank`
-      span= ` ${name}`
-    p $ #{price}
-  button Purchase
-  button Add to wishlist
+        span.item__country
+        //span.item__tank-type= tankType === 'destroyer' ? ' tank destroyer' : ` ${tankType} tank`
+        span.item__tank-type
+      span.item__name= ` ${name}`
+    p.item__price $ #{price}
+    button.item__btn.item__btn--purphase Purchase
+    button.item__btn.item__btn--wish

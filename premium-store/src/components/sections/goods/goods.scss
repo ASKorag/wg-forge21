@@ -1,0 +1,13 @@
+.goods {
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+
+  }
+
+  &__list-item {
+    background-color: lightseagreen;
+  }
+}

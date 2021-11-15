@@ -1,89 +1,11 @@
-include ../../components/molecules/item/item
-
--
-  var items = [
-    {
-      type: 'vehicle',
-      name: 'ИС-6',
-      country: 'ussr',
-      tankType: 'heavy',
-      price: '47.99',
-      image: 'is-6',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19045/'
-    },
-    {
-      type: 'vehicle',
-      name: 'VIII Lowe',
-      country: 'norway',
-      tankType: 'heavy',
-      price: '42.99',
-      image: 'lowe',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19044/'
-    },
-    {name: 'Extension Pack', price: '28.99', image: 'extension', href: '#'},
-    {
-      name: 'Wot Premium Account: 3 Days',
-      price: '2.99',
-      image: 'premium-3',
-      href: 'https://eu.wargaming.net/shop/wot/premium/ps_p_13629/'
-    },
-    {
-      type: 'vehicle',
-      name: 'VII M56 Scorpion',
-      country: 'usa',
-      tankType: 'destroyer',
-      price: '24.99',
-      image: 'm56-scorpion',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19057/'
-    },
-    {
-      type: 'vehicle',
-      name: 'VIII FV4202',
-      country: 'britain',
-      tankType: 'medium',
-      price: '40.99',
-      image: 'fv4202',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19056/'
-    },
-    {
-      type: 'vehicle',
-      name: 'VIII M4A1 Revalorise',
-      country: 'france',
-      tankType: 'medium',
-      price: '35.99',
-      image: 'm4a1-revalorise',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19055/'
-    },
-    {name: '10 personal reserves: +15% xp limited edition', price: '29.99', image: 'reserves', href: '#'},
-    {name: 'gold: 25.000', price: '99.99', image: 'gold', href: 'https://eu.wargaming.net/shop/wot/gold/ps_p_128/'},
-    {
-      type: 'vehicle',
-      name: 'VIII T92',
-      country: 'usa',
-      tankType: 'light',
-      price: '36.99',
-      image: 't92',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/20189/'
-    },
-  ]
-
-
-
 doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Premium Store
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Premium Shop
   body
     include ../../components/sections/header/header
     main
       include ../../components/sections/categories/categories
-      //div.tabs
-      //  div._wrap
-      //    a(href='https://worldoftanks.ru/')._link
-      //    +tab-panel(tabs)
-      div
-        ul
-          each item in items
-            li
-              +item(item)
+      include ../../components/sections/goods/goods
