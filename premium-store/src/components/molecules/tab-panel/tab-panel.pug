@@ -1,5 +1,6 @@
 mixin tab-panel(tabs)
-  ul
+  ul(class=[attributes.class]).tab-panel._list
     each tab in tabs
-      li
-        button= tab
+      - var {text, isActive} = tab
+      li.tab-panel__item
+        button(class=['tab-panel__btn', isActive ? 'tab-panel__btn--active' : ''])= text

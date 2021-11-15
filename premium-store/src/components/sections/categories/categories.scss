@@ -1,0 +1,23 @@
+.categories {
+  min-height: 83px;
+  background: linear-gradient(0deg, #232323, #232323), #181818;
+
+  &__wrap {
+    display: flex;
+    padding: 20px 15px;
+  }
+
+  &__tab-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-left: 900px;
+  }
+
+  &__link {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+  }
+}

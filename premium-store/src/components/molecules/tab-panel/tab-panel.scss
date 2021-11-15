@@ -1,0 +1,48 @@
+@use '~@scss-vars/colors.scss' as c;
+
+.tab-panel {
+  display: flex;
+  gap: 20px 44px;
+
+  &__item {
+
+  }
+
+  &__btn {
+    padding: 0;
+    position: relative;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: .75px;
+    border: none;
+    background-color: transparent;
+    color: c.$MAIN_FONT_COLOR;
+    transition: color 0.5s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      color: c.$ACTIVE_FONT_COLOR;
+    }
+
+    &--active {
+      color: c.$ACTIVE_FONT_COLOR;
+
+      &:after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: calc(100% + 10px);
+        top: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        background-color: white;
+      }
+    }
+
+
+  }
+}
