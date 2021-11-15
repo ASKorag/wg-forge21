@@ -1,17 +1,20 @@
-nav
-  ul
-    li
-      a(href='/wishlist')
-        span Wishlist
-        span  (2)
-        span Серд.
-    li
-      a(href='/cart')
-        span Shopping cart
-        span Тележка
-        span  (5)
-    li
-      a(href='#') Login
-      span  or
-      a(href='#')  Create account
-      a(href='#') Log out
+nav.nav-panel
+  ul.nav-panel__list._list
+    li.nav-panel__item
+      a(href='/wishlist').nav-panel__link._link
+        span.nav-panel__text Wishlist
+        span.nav-panel__count (2)
+        span.nav-panel__icon
+    li.nav-panel__item
+      a(href='/cart').nav-panel__link._link
+        span.nav-panel__text Shopping cart
+        span.nav-panel__icon
+        span.nav-panel__count  (5)
+    li.nav-panel__item
+      a(href='#').nav-panel__link._link
+        span.nav-panel__text Login
+      span.nav-panel__text  or
+      a(href='#').nav-panel__link._link
+        span.nav-panel__text Create account
+      a(href='#').nav-panel__link._link
+        span.nav-panel__icon
