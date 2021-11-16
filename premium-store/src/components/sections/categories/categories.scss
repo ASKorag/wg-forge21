@@ -4,20 +4,20 @@
 
   &__wrap {
     display: flex;
-    padding: 20px 15px;
+    justify-content: space-between;
+    padding: 13px 15px 16px;
   }
 
   &__tab-panel {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin-left: 50px;
   }
 
   &__link {
     display: block;
-    width: 15px;
-    height: 15px;
-    background-color: red;
+    width: 19px;
+    height: 24px;
+    background-image: url("~@icons/logo-wot.webp");
   }
 }

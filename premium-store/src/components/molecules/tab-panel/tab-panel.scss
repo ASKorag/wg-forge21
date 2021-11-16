@@ -2,7 +2,8 @@
 
 .tab-panel {
   display: flex;
-  gap: 20px 44px;
+  gap: 30px 45px;
+  max-width: 220px;
 
   &__item {
 
@@ -35,14 +36,12 @@
         content: '';
         display: block;
         width: calc(100% + 10px);
-        top: 110%;
+        top: calc(100% + 8px);
         left: 50%;
         transform: translateX(-50%);
-        height: 3px;
+        height: 4px;
         background-color: white;
       }
     }
-
-
   }
 }

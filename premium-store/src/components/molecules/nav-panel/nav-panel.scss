@@ -9,7 +9,7 @@
   }
 
   &__item {
-    transition: color 0.5s ease-in-out;
+    transition: color .5s ease-in-out;
 
     &:hover {
       color: white;
@@ -31,8 +31,26 @@
 
   &__icon {
     display: block;
-    width: 15px;
-    height: 15px;
-    background-color: red;
+
+    &--heart {
+      width: 16px;
+      height: 14px;
+      background-image: url("~@icons/heart.svg");
+    }
+
+    &--cart {
+      width: 16px;
+      height: 16px;
+      background-image: url("~@icons/shopcart.svg");
+    }
+
+    &--logout {
+      width: 20px;
+      height: 17px;
+      background-image: url("~@icons/logout.webp");
+    }
+
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
