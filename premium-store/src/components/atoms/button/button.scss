@@ -1,0 +1,14 @@
+@use '~@scss-vars/colors.scss' as c;
+
+.btn {
+  width: 100px;
+  height: 39px;
+  background-color: c.$MAIN_BTN_COLOR;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  text-transform: uppercase;
+  color: c.$ACTIVE_FONT_COLOR;
+}

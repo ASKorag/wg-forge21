@@ -1,13 +1,17 @@
+@use '~@scss-vars/colors.scss' as c;
+@use '~@scss-vars/sizes.scss' as s;
+
 .goods {
+  background-color: c.$MAIN_BG_COLOR;
 
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-
+    gap: s.$GRID_GAP;
   }
 
   &__list-item {
-    background-color: lightseagreen;
+    height: 160px;
+    //background-color: lightseagreen;
   }
 }

@@ -9,7 +9,8 @@ include ../../molecules/item/item
       tankType: 'heavy',
       price: '47.99',
       image: 'is-6',
-      href: 'https://eu.wargaming.net/shop/wot/vehicles/19045/'
+      href: 'https://eu.wargaming.net/shop/wot/vehicles/19045/',
+      isWish: true,
     },
     {
       type: 'vehicle',
@@ -20,8 +21,9 @@ include ../../molecules/item/item
       image: 'lowe',
       href: 'https://eu.wargaming.net/shop/wot/vehicles/19044/'
     },
-    {name: 'Extension Pack', price: '28.99', image: 'extension', href: '#'},
+    {type: 'extra', name: 'Extension Pack', price: '28.99', image: 'extension', href: '#'},
     {
+      type: 'premium',
       name: 'Wot Premium Account: 3 Days',
       price: '2.99',
       image: 'premium-3',
@@ -55,8 +57,21 @@ include ../../molecules/item/item
       image: 'm4a1-revalorise',
       href: 'https://eu.wargaming.net/shop/wot/vehicles/19055/'
     },
-    {name: '10 personal reserves: +15% xp limited edition', price: '29.99', image: 'reserves', href: '#'},
-    {name: 'gold: 25.000', price: '99.99', image: 'gold', href: 'https://eu.wargaming.net/shop/wot/gold/ps_p_128/'},
+    {
+      type: 'extra',
+      name: '10 personal reserves: +15% xp limited edition',
+      price: '29.99',
+      image: 'reserves',
+      href: '#',
+      isWish: true,
+    },
+    {
+      type: 'gold',
+      name: 'gold: 25.000',
+      price: '99.99',
+      image: 'gold',
+      href: 'https://eu.wargaming.net/shop/wot/gold/ps_p_128/'
+    },
     {
       type: 'vehicle',
       name: 'VIII T92',

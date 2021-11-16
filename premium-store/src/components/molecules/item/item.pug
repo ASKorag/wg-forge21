@@ -1,13 +1,16 @@
+include ../../atoms/button/button
+
 mixin item(item)
-  - var {type, href, price, name, country, tankType, image, size} = item
+  - var {type, href, price, name, country, tankType, image, size, isWish} = item
   a(class=[attributes.class, size === 'big' ? `${attributes.class}--big` : ''] href=href).item._link
-    img(src=image alt=image).item__img
-    h2.item__descr
-      if (type === 'vehicle')
-        span.item__country
-        //span.item__tank-type= tankType === 'destroyer' ? ' tank destroyer' : ` ${tankType} tank`
-        span.item__tank-type
-      span.item__name= ` ${name}`
-    p.item__price $ #{price}
-    button.item__btn.item__btn--purphase Purchase
-    button.item__btn.item__btn--wish
+    img(width= type ===
+    'premium' ? '75px' : '150px' height='75px' src=require(`@images/${type}/${image}.webp`) alt=image).item__img._im
+    .item__content
+      h2.item__descr
+        if (type === 'vehicle')
+          span(class=['item__country', `item__country--${country}`])
+          span(class=['item__vehicle-type', `item__vehicle-type--${tankType}`])
+        span.item__name= ` ${name}`
+      p.item__price $ #{price}
+      +button('Purchase').item__bay
+    button(class=['item__wish', isWish ? 'item__wish--added' : ''])
