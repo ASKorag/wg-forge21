@@ -2,9 +2,10 @@ include ../../atoms/button/button
 
 mixin item(item)
   - var {type, href, price, name, country, tankType, image, size, isWish} = item
-  a(class=[attributes.class, size === 'big' ? `${attributes.class}--big` : ''] href=href).item._link
-    img(width= type ===
-    'premium' ? '75px' : '150px' height='75px' src=require(`@images/${type}/${image}.webp`) alt=image).item__img._im
+  a(class=[attributes.class, 'item', '_link'] href=href)
+    img(class=['item__img'
+      , `item__img--${type}`, size ===
+      'big' ? 'item__img--big' : '', '_img'] width='50%' height='50%' src=require(`@images/${type}/${image}.webp`) alt=image)
     .item__content
       h2.item__descr
         if (type === 'vehicle')

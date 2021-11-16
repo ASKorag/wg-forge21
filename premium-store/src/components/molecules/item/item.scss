@@ -12,6 +12,15 @@
 
   &__img {
 
+    &--vehicle {
+      width: 150px;
+    }
+
+    &--big {
+      width: 251px;
+      height: 115px;
+    }
+
   }
 
   &__content {
@@ -42,8 +51,7 @@
     display: block;
     width: 21px;
     height: 14px;
-    background-size: cover;
-
+    background-size: contain;
 
     @each $country in ussr, usa, norway, france, britain {
       @include m.flag($country)

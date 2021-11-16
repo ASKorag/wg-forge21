@@ -8,10 +8,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: s.$GRID_GAP;
+    grid-auto-flow: dense;
   }
 
   &__list-item {
     height: 160px;
-    //background-color: lightseagreen;
+
+    &--big {
+      grid-column: span 2;
+    }
+  }
+
+  &__item {
+    
   }
 }
