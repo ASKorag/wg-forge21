@@ -70,15 +70,23 @@ include ../components/molecules/item/item
 
 - var tabs = ['all', 'vehicles', 'gold', 'premium account']
 
-
-include ../components/sections/header/header
-main
-  div
-    div
-      a(href='https://worldoftanks.ru/')
-      +tab-panel(tabs)
-    div
-      ul
-        each item in items
-          li
-            +item(item)
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='icon' type='image/svg+xml' href='../../favicon.svg')
+    title Premium Store
+  body
+    include ../components/sections/header/header
+    main
+      div
+        div
+          a(href='https://worldoftanks.ru/')
+          +tab-panel(tabs)
+        div
+          ul
+            each item in items
+              li
+                +item(item)
+    script(type='module' src='./main.ts')
