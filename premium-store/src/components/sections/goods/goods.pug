@@ -1,4 +1,4 @@
-include ../../molecules/item/item
+include /molecules/item/item
 
 -
   var items = [
@@ -86,6 +86,5 @@ include ../../molecules/item/item
 div.goods
   ul.goods__list._list._wrap
     each item in items
-      //li.goods__list-item
       li(class=['goods__list-item', item.size === 'big' ? 'goods__list-item--big' : ''])
         +item(item).goods__item

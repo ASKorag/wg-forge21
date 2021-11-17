@@ -48,6 +48,7 @@ module.exports = {
         test: /\.pug$/,
         loader: 'simple-pug-loader',
         options: {
+          root: resolve(src, 'components'),
           pretty: true,
         },
       },
@@ -71,7 +72,12 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'ts',
+          target: 'es2015'
+        },
+        // use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
