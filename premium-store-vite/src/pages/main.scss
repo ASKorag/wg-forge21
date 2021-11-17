@@ -1,4 +1,15 @@
-body {
-  background-color: red;
-}
+//@import '~normalize.css';
+@import '@scss-utils/fix.scss';
+@import '@scss-utils/util.scss';
+@import '@scss-utils/fonts.scss';
 
+@import '@atoms/logo/logo.scss';
+@import '@atoms/button/button.scss';
+
+@import '@molecules/nav-panel/nav-panel.scss';
+@import '@molecules/tab-panel/tab-panel.scss';
+@import '@molecules/item/item.scss';
+
+@import '@sections/header/header.scss';
+@import '@sections/categories/categories.scss';
+@import '@sections/goods/goods.scss';

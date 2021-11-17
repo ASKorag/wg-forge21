@@ -1,0 +1,14 @@
+include /molecules/tab-panel/tab-panel
+
+-
+  var tabs = [
+    {text: 'all', isActive: true},
+    {text: 'vehicle'},
+    {text: 'gold'},
+    {text: 'premium account'}
+  ]
+
+div.categories
+  div.categories__wrap._wrap
+    a(href='https://worldoftanks.ru/').categories__link._link
+    +tab-panel(tabs).categories__tab-panel

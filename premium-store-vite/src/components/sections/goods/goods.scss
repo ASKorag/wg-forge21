@@ -1,0 +1,25 @@
+@use '@scss-vars/colors.scss' as c;
+@use '@scss-vars/sizes.scss' as s;
+
+.goods {
+  background-color: c.$MAIN_BG_COLOR;
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: s.$GRID_GAP;
+    grid-auto-flow: dense;
+  }
+
+  &__list-item {
+    height: 160px;
+
+    &--big {
+      grid-column: span 2;
+    }
+  }
+
+  &__item {
+
+  }
+}

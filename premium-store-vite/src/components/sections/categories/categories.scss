@@ -1,0 +1,23 @@
+.categories {
+  min-height: 83px;
+  background: linear-gradient(0deg, #232323, #232323), #181818;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 15px 16px;
+  }
+
+  &__tab-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  &__link {
+    display: block;
+    width: 19px;
+    height: 24px;
+    background-image: url('@icons/logo-wot.webp');
+  }
+}

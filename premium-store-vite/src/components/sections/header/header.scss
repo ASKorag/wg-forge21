@@ -1,0 +1,12 @@
+@use '@scss-vars/colors.scss' as c;
+
+.header {
+  height: 40px;
+  background-color: c.$MAIN_DARK_COLOR;
+  color: c.$MAIN_FONT_COLOR;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+}

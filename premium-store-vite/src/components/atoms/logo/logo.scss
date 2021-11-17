@@ -1,0 +1,29 @@
+@use '@scss-vars/colors.scss' as c;
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: color 0.5s ease-in-out;
+
+  &:hover {
+    color: c.$ACTIVE_FONT_COLOR;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    background-image: url('@icons/logo.webp');
+  }
+
+  &__text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+}

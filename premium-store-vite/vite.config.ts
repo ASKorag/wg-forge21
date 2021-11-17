@@ -34,7 +34,7 @@ export default defineConfig({
       '@scss-vars': resolve(src, 'scss/variables')
     }
   },
-  plugins: [PugPlugin({localImports: true})],
+  plugins: [PugPlugin({basedir: resolve(src, 'components'), localImports: true})],
   server: {
     open: true
   }
