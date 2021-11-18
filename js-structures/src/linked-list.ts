@@ -3,7 +3,62 @@ module.exports = class LinkedList {
   #tail: TNode | null = null
   #size = 0
 
-  add(item: any, pos ?: number) {
+  validate(pos: number, methodType: 'get' | 'add' | 'remove') {
+    if (methodType === 'remove' && this.#size === 0) {
+      throw new Error('The list is empty')
+    }
+    if (pos < 0) {
+      throw new Error('Incorrect position')
+    }
+    if ((methodType === 'add' && pos > this.#size) || (methodType === 'get' && pos > this.#size - 1) || (methodType === 'remove' && pos > this.#size - 1)) {
+      throw new Error('Incorrect position')
+    }
+  }
+
+  getNode(pos: number): TNode | undefined {
+    let currentNode = this.#head
+    for (let i = 0; i < pos; i++) {
+      if (currentNode === null) {
+        return undefined
+      }
+      currentNode = currentNode!.next
+    }
+    return currentNode!
+  }
+
+  get(pos: number) {
+    pos = +pos
+    this.validate(pos, 'get')
+    return this.getNode(pos)
+  }
+
+  remove(pos: number) {
+    pos = +pos
+    this.validate(pos, 'remove')
+
+    if (pos === 0) {
+      this.#head = this.#head!.next
+      this.#size--
+    } else {
+      const prev = this.getNode(pos - 1)
+      const deletedNode = prev!.next
+
+      if (deletedNode === this.#tail) {
+        prev!.next = null
+        this.#tail = prev!
+        this.#size--
+      } else {
+        prev!.next = deletedNode!.next
+        this.#size--
+      }
+    }
+  }
+
+  add(item: any, pos?: number) {
+    if (pos !== undefined) {
+      pos = +pos
+    }
+
     if (pos === undefined) {
       if (this.#size === 0) {
         this.#head = {
