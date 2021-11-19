@@ -73,6 +73,7 @@ test('Run with overflow', () => {
 })
 
 test('Run with very big output', () => {
-  expect(collapse(2 ** 32))
-    .toThrowError(new RangeError('Invalid array length'))
+  expect(() => {
+    collapse(2 ** 32)
+  }).toThrowError(new RangeError('Invalid array length'))
 })
