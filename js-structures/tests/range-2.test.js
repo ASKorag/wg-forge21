@@ -1,1 +1,0 @@
-const range = require('../dist/range-2.js')
