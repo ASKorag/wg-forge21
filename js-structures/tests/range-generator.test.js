@@ -71,3 +71,8 @@ test('Run with overflow', () => {
   expect(collapse(maxNum, maxNum + 5))
     .toEqual(rangeOld(maxNum, maxNum + 5))
 })
+
+test('Run with very big output', () => {
+  expect(collapse(2 ** 32))
+    .toThrowError(new RangeError('Invalid array length'))
+})
