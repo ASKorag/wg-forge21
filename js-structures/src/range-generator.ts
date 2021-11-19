@@ -6,22 +6,14 @@ module.exports = function* range(from: number, to?: number, step?: number) {
     if (diff < step) {  //too large step
       yield  from
     } else {
-      const rangeSize = Math.ceil(diff / Math.abs(step)) //size of range
-      checkRangeSize(rangeSize)
+      const rangeSize = Math.ceil(diff / Math.abs(step))
 
-      let cur = from
+      let curValue = from
       for (let i = 0; i < rangeSize; i++) {
-        yield cur
-        cur += step
+        yield curValue
+        curValue += step
       }
     }
-  }
-}
-
-function checkRangeSize(size: number) {
-  const MAX_ARR_LENGTH = 2 ** 32 - 1
-  if (size > MAX_ARR_LENGTH) {
-    throw new RangeError('Invalid array length')
   }
 }
 
