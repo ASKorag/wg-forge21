@@ -3,136 +3,104 @@ module.exports = class LinkedList {
   #tail: TNode | null = null
   #size = 0
 
-  validate(pos: number, methodType: 'get' | 'add' | 'remove') {
-    if (methodType === 'remove' && this.#size === 0) {
+  static validate(pos: number, size: number, methodType: 'get' | 'add' | 'remove') {
+    if (methodType === 'remove' && size === 0) {
       throw new Error('The list is empty')
     }
-    if (pos < 0) {
-      throw new Error('Incorrect position')
-    }
-    if ((methodType === 'add' && pos > this.#size) || (methodType === 'get' && pos > this.#size - 1) || (methodType === 'remove' && pos > this.#size - 1)) {
-      throw new Error('Incorrect position')
+    if (pos < 0 ||
+      methodType === 'add' && pos > size ||
+      methodType !== 'add' && pos > size - 1) {
+      throw new RangeError('Incorrect position')
     }
   }
 
-  getNode(pos: number): TNode | undefined {
-    let currentNode = this.#head
+  static getNode(pos: number, head: TNode): TNode {  //get node of the list without validation
+    let curNode = head
     for (let i = 0; i < pos; i++) {
-      if (currentNode === null) {
-        return undefined
-      }
-      currentNode = currentNode!.next
+      curNode = curNode!.next
     }
-    return currentNode!
+    return curNode!
+  }
+
+  #append(value: TValue) {  //add at the end of the list without validation
+    const newNode = new LinkedListNode(value)
+    if (this.#size === 0) {
+      this.#tail = this.#head = newNode
+    } else {
+      this.#tail = this.#tail!.next = newNode //add a new node to the tail and move the tail to the new node
+    }
   }
 
   get(pos: number) {
     pos = +pos
-    this.validate(pos, 'get')
-    return this.getNode(pos)
+    LinkedList.validate(pos, this.#size, 'get')
+    return LinkedList.getNode(pos, this.#head)
   }
 
   remove(pos: number) {
     pos = +pos
-    this.validate(pos, 'remove')
+    LinkedList.validate(pos, this.#size, 'remove')
 
-    if (pos === 0) {
-      this.#head = this.#head!.next
-      this.#size--
-    } else {
-      const prev = this.getNode(pos - 1)
-      const deletedNode = prev!.next
-
-      if (deletedNode === this.#tail) {
-        prev!.next = null
-        this.#tail = prev!
-        this.#size--
-      } else {
-        prev!.next = deletedNode!.next
-        this.#size--
-      }
+    const deletedNode = LinkedList.getNode(pos, this.#head)
+    if (deletedNode === this.#tail) { //usual remove of the last node
+      const prevNode = LinkedList.getNode(pos - 1, this.#head)
+      prevNode.next = null
+      this.#tail = prevNode
+    } else {  //clever remove by copying a node
+      const tempNode = deletedNode.next
+      deletedNode.value = tempNode!.value
+      deletedNode.next = tempNode!.next
     }
+    this.#size--
   }
 
-  add(item: any, pos?: number) {
-    if (pos !== undefined) {
-      pos = +pos
-    }
-
+  add(item: TValue, pos?: number) {
     if (pos === undefined) {
-      if (this.#size === 0) {
-        this.#head = {
-          value: item,
-          next: null
-        }
-        this.#tail = this.#head
-        this.#size++
-      } else {
-        this.#tail!.next = {
-          value: item,
-          next: null
-        }
-        this.#tail = this.#tail!.next
-        this.#size++
-      }
+      this.#append(item)
     } else {
-      if (pos < 0 || pos > this.#size) {
-        throw new Error('Incorrect position')
-      }
+      pos = +pos
+      LinkedList.validate(pos, this.#size, 'add')
+
       if (pos === 0) {
-        const newNode = {
-          value: item,
-          next: this.#head
-        }
+        const newNode = new LinkedListNode(item, this.#head!)
         this.#head = newNode
-        this.#size++
+      } else if (pos === this.#size) {  //add at the end of the list
+        this.#append(item)
       } else {
-        let node = this.#head
-        let prev = null
-        for (let i = 0; i < pos; i++) {
-          prev = node
-          node = node!.next
-        }
-        const newNode = {
-          value: item,
-          next: node
-        }
-        prev!.next = newNode
-        this.#size++
+        const prevNode = LinkedList.getNode(pos - 1, this.#head)
+        const newNode = new LinkedListNode(item, prevNode.next!)
+        prevNode.next = newNode
       }
-
-
     }
+    this.#size++
   }
 
   [Symbol.iterator]() {
-    const firstNode = this.#head
+    let curNode = this.#head
     return {
-      currentNode: firstNode,
       next() {
-        if (this.currentNode === null) {
+        if (curNode === null) {
           return {done: true}
         } else {
-          const save = this.currentNode
-          this.currentNode = this.currentNode.next
-          return {value: save.value, done: false}
+          const tempValue = curNode.value //save value before iteration
+          curNode = curNode.next
+          return {value: tempValue, done: false}
         }
       }
     }
   }
-
 }
 
 class LinkedListNode implements TNode {
-  next: LinkedListNode | null = null
-
-  constructor(public value: string | number, nextNode?: LinkedListNode) {
+  constructor(value: TValue, next: TNode | null = null) {
     this.value = value
-    this.next = nextNode instanceof LinkedListNode ? nextNode : null
+    this.next = next
   }
 }
 
+type TValue = string | number
+
 type TNode = {
-  value: string | number,
+  value: TValue,
   next: TNode | null
 }

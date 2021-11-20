@@ -17,6 +17,7 @@ module.exports = function* range(from: number, to?: number, step?: number) {
   }
 }
 
+//allows a range call with an incomplete number of arguments to be corrected into a range call with all arguments
 function normalizeArgs(from, to, step) {
   if (to === undefined) {
     if (from > 0) {
@@ -30,6 +31,7 @@ function normalizeArgs(from, to, step) {
   return [from, to, step]
 }
 
+//checking the coincidence of the sign of the step and the direction (increasing / decreasing) of filling the range
 function isCorrectStepSign(from, to, step) {
   return (from < to && step > 0) || (from > to && step < 0)
 }
