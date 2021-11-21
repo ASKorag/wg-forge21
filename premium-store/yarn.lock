@@ -302,10 +302,10 @@
     "@webassemblyjs/ast" "1.11.1"
     "@xtuc/long" "4.2.2"
 
-"@webdiscus/pug-loader@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@webdiscus/pug-loader/-/pug-loader-1.4.1.tgz#781b544b1fcbcf5baff73c8a5dc9ce4cb24f95ba"
-  integrity sha512-GVoYCCy5QLcQtIOF0iBIZyDdVWsf/SRF800YqYeg5JAFR0FTUcqlNz1MxIHAPPN7dz5NAkzr3ibIBCp4ilAqdQ==
+"@webdiscus/pug-loader@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@webdiscus/pug-loader/-/pug-loader-1.4.4.tgz#05a78b2ea6e3bc569a7e2df76a1ba6c76c9729cf"
+  integrity sha512-d7xalklXj6ywq0EJFcqFWBvJwSxddH6kih8cEOG3Jf32wue3meGzejQIcYV1RD6+P56L5CicEYaFJozCGnj2kw==
   dependencies:
     pug "^3.0.2"
     webpack-merge "^5.8.0"

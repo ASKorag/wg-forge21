@@ -46,9 +46,10 @@ module.exports = {
     rules: [
       {
         test: /\.pug$/,
-        loader: 'simple-pug-loader',
+        // loader: 'simple-pug-loader',
+        loader: '@webdiscus/pug-loader',
         options: {
-          root: resolve(src, 'components'),
+          basedir: resolve(src, 'components'),
           pretty: true,
         },
       },
@@ -75,7 +76,7 @@ module.exports = {
         loader: 'esbuild-loader',
         options: {
           loader: 'ts',
-          target: 'es2015'
+          target: 'esnext'
         },
         // use: 'ts-loader',
         exclude: /node_modules/,
