@@ -1,0 +1,12 @@
+@use '~@scss-vars/breakpoints' as b;
+
+@media (min-width: b.$DISPLAY_480) {
+  .goods {
+
+    &__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+

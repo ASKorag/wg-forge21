@@ -1,5 +1,5 @@
-@use '~@scss-vars/colors.scss' as c;
-@use '~@scss-vars/sizes.scss' as s;
+@use '~@scss-vars/colors' as c;
+@use '~@scss-vars/sizes' as s;
 
 .goods {
   background-color: c.$MAIN_BG_COLOR;
@@ -20,6 +20,8 @@
   }
 
   &__item {
-    
+
   }
 }
+
+@import 'goods-media';
