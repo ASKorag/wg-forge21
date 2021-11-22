@@ -46,8 +46,8 @@ module.exports = {
     rules: [
       {
         test: /\.pug$/,
-        // loader: 'simple-pug-loader',
-        loader: '@webdiscus/pug-loader',
+        loader: 'simple-pug-loader',
+        // loader: '@webdiscus/pug-loader',
         options: {
           basedir: resolve(src, 'components'),
           pretty: true,

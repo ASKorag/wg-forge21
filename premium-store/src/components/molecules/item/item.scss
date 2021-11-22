@@ -6,9 +6,7 @@
   width: 100%;
   height: 100%;
   background-color: #090806;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-centering;
 
   &__img {
 
@@ -36,15 +34,13 @@
   }
 
   &__descr {
+    @extend %font;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 400;
     font-size: 13px;
     line-height: 15px;
     letter-spacing: 1.3px;
-    text-transform: uppercase;
   }
 
   &__country {
@@ -73,8 +69,7 @@
   }
 
   &__price {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 400;
+    @extend %font;
     font-size: 15px;
     line-height: 18px;
     letter-spacing: 1.5px;
@@ -94,7 +89,7 @@
     top: 16px;
     width: 24px;
     height: 22px;
-    background-image: url("~@icons/heart-hollow.svg");
+    background-image: url('~@icons/heart-hollow.svg');
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -102,7 +97,7 @@
     &--added {
       width: 19px;
       height: 19px;
-      background-image: url("~@icons/heart.svg");
+      background-image: url('~@icons/heart.svg');
     }
   }
 
