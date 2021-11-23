@@ -9,6 +9,7 @@ module.exports = {
   devtool: 'inline-source-map',
   // context: resolve(__dirname, 'src/page'),
   entry: resolve(src, 'pages/main', 'main.ts'),
+  // entry: resolve(src, 'pages/vehicles/m56-scorpion', 'm56-scorpion.ts'),
   resolve: {
     alias: {
       '@atoms': resolve(src, 'components/atoms/'),
@@ -25,7 +26,7 @@ module.exports = {
     },
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     clean: true,
   },
   devServer: {
@@ -36,6 +37,11 @@ module.exports = {
   plugins: [
     new HTMLWebpackPlugin({
       template: resolve(src, 'pages/main', 'main.pug'),
+      minify: false,
+    }),
+    new HTMLWebpackPlugin({
+      filename: 'vehicles/m56-scorpion.html',
+      template: resolve(src, 'pages/vehicles/m56-scorpion', 'm56-scorpion.pug'),
       minify: false,
     }),
     new MiniCSSExtractPlugin({

@@ -14,3 +14,9 @@
 @import '~@sections/header/header';
 @import '~@sections/categories/categories';
 @import '~@sections/goods/goods';
+@import '~@sections/vehicle/vehicle';
+
+body {
+  @extend %font;
+  //height: 100vh;
+}

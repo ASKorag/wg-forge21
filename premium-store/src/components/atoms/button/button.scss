@@ -3,11 +3,11 @@
 
 .btn {
   @extend %font;
-  width: 100px;
-  height: 39px;
+  width: 160px;
+  height: 60px;
   background-color: c.$MAIN_BTN_COLOR;
-  font-size: f.getREM(12);
-  line-height: 18px;
-  letter-spacing: 0.12px;
+  font-size: f.getREM(17);
+  letter-spacing: .85px;
   color: c.$ACTIVE_FONT_COLOR;
+  border: none;
 }
