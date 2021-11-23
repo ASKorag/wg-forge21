@@ -1,5 +1,6 @@
 @use '~@scss-vars/colors' as c;
 @use '~@scss-utils/mixins' as m;
+@use '~@scss-utils/functions' as f;
 
 .item {
   position: relative;
@@ -38,8 +39,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
-    line-height: 15px;
+    font-size: f.getREM(13);
     letter-spacing: 1.3px;
   }
 
@@ -70,8 +70,7 @@
 
   &__price {
     @extend %font;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: f.getREM(15);
     letter-spacing: 1.5px;
     color: c.$PRICE_FONT_COLOR;
     margin-bottom: 16px;

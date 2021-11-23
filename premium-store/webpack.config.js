@@ -50,7 +50,6 @@ module.exports = {
         // loader: '@webdiscus/pug-loader',
         options: {
           basedir: resolve(src, 'components'),
-          pretty: true,
         },
       },
       {
@@ -84,10 +83,16 @@ module.exports = {
       {
         test: /\.(svg|jpg|png|webp)$/,
         type: 'asset/resource',
+        generator: {
+          filename: '[path]/[name][ext]'
+        }
       },
       {
         test: /\.(woff2)$/,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          filename: '[path]/[name][ext]'
+        }
       }
     ],
   },

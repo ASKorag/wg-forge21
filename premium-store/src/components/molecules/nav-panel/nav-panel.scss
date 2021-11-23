@@ -1,3 +1,5 @@
+@use '~@scss-utils/functions' as f;
+
 .nav-panel {
 
   &__list {
@@ -27,6 +29,9 @@
   }
 
   &__count {
+    @extend %font;
+    font-size: f.getREM(15);
+    letter-spacing: 0.38px;
   }
 
   &__icon {
@@ -36,19 +41,19 @@
       width: 16px;
       height: 14px;
       color: white;
-      background-image: url("~@icons/heart.svg");
+      background-image: url('~@icons/heart.svg');
     }
 
     &--cart {
       width: 16px;
       height: 16px;
-      background-image: url("~@icons/shopcart.svg");
+      background-image: url('~@icons/shopcart.svg');
     }
 
     &--logout {
       width: 20px;
       height: 17px;
-      background-image: url("~@icons/logout.webp");
+      background-image: url('~@icons/logout.webp');
     }
 
     background-size: contain;
