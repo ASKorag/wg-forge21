@@ -1,0 +1,6 @@
+mixin tab-panel(tabs)
+  div(class=[attributes.class]).tab-panel._list
+    each tab in tabs
+      - var {text, isActive} = tab
+      .tab-panel__item
+        button(class=['tab-panel__btn', isActive ? 'tab-panel__btn--active' : ''])= text
