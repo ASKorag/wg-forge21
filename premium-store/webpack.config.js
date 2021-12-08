@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const src = resolve(__dirname, 'src')
 
 module.exports = {
+  target: 'web',
   stats: 'errors-warnings',
   devtool: 'inline-source-map',
   // context: resolve(__dirname, 'src/page'),
@@ -33,10 +34,12 @@ module.exports = {
     open: true,
     port: 9000,
     hot: true,
+    static: resolve(src, 'assets'),
   },
   plugins: [
     new HTMLWebpackPlugin({
       template: resolve(src, 'pages/main', 'main.pug'),
+      chunks: ['main'],
       minify: false,
     }),
     new HTMLWebpackPlugin({
@@ -90,14 +93,14 @@ module.exports = {
         test: /\.(svg|jpg|png|webp)$/,
         type: 'asset/resource',
         generator: {
-          filename: '[path]/[name][ext]'
+          filename: 'assets/images/[name][ext]'
         }
       },
       {
         test: /\.(woff2)$/,
         type: 'asset/resource',
         generator: {
-          filename: '[path]/[name][ext]'
+          filename: 'assets/fonts/[name][ext]'
         }
       }
     ],
