@@ -1,0 +1,7 @@
+@use '~@scss-vars/breakpoints' as b;
+
+@media (min-width: b.$DISPLAY_480) {
+  .categories {
+    min-height: 50px;
+  }
+}

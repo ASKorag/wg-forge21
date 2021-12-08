@@ -1,0 +1,17 @@
+@mixin flag($country) {
+  &--#{$country} {
+    background-image: url('~@icons/countries/#{$country}.webp');
+  }
+}
+
+@mixin vehicle-type($type) {
+  &--#{$type} {
+
+    @if $type == 'destroyer' {
+      width: 10px;
+      height: 7px;
+    }
+
+    background-image: url('~@icons/vehicle-types/#{$type}.svg');
+  }
+}

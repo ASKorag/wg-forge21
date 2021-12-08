@@ -1,0 +1,27 @@
+@use '~@scss-vars/colors' as c;
+@use '~@scss-utils/functions' as f;
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  transition: color 0.5s ease-in-out;
+
+  &:hover {
+    color: c.$ACTIVE_FONT_COLOR;
+  }
+
+  &__icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    background-image: url('~@icons/logo.webp');
+  }
+
+  &__text {
+    @extend %font;
+    font-size: f.getREM(12);
+    letter-spacing: 1.2px;
+  }
+}

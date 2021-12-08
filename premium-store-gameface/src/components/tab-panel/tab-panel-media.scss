@@ -1,0 +1,8 @@
+@use '~@scss-vars/breakpoints' as b;
+
+@media (min-width: b.$DISPLAY_480) {
+  .tab-panel {
+    max-width: none;
+  }
+
+}

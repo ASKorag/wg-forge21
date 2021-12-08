@@ -1,0 +1,13 @@
+@use '~@scss-vars/colors' as c;
+@use '~@scss-utils/functions' as f;
+
+.btn {
+  @extend %font;
+  width: 160px;
+  height: 60px;
+  background-color: c.$MAIN_BTN_COLOR;
+  font-size: f.getREM(17);
+  letter-spacing: .85px;
+  color: c.$ACTIVE_FONT_COLOR;
+  border: none;
+}
