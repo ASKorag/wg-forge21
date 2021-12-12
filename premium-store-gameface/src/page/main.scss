@@ -10,6 +10,15 @@
 @import '~@components/logo/logo.scss';
 @import '~@components/nav-panel/nav-panel.scss';
 
+@import '~@components/categories/categories.scss';
+@import '~@components/tab-panel/tab-panel.scss';
+
 body {
   background-color: c.$MAIN_DARK_COLOR;
+}
+
+.main {
+  background-color: c.$MAIN_BG_COLOR;
+  background-image: url('~@images/backgrounds/bg.webp');
+  background-repeat: no-repeat;
 }

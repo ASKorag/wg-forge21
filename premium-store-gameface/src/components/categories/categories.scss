@@ -1,14 +1,17 @@
 .categories {
-  min-height: 83px;
-  background: linear-gradient(0deg, #232323, #232323), #181818;
+  display: flex;
+  justify-content: center;
+  min-height: 123px;
 
   &__wrap {
     display: flex;
     justify-content: space-between;
-    padding: 13px 15px 16px;
+    padding-bottom: 35px;
+    //padding: 13px 15px 16px;
   }
 
   &__tab-panel {
+    align-self: flex-end;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
@@ -16,10 +19,10 @@
 
   &__link {
     display: block;
-    width: 19px;
-    height: 24px;
-    background-image: url('~@icons/logo-wot.webp');
+    width: 185px;
+    height: 98px;
+    background-image: url('~@images/logo-wot-big.webp');
   }
 }
 
-@import 'categories-media';
+//@import 'categories-media';

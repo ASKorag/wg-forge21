@@ -3,8 +3,9 @@
 
 .tab-panel {
   display: flex;
-  gap: 30px 45px;
-  max-width: 230px;
+  gap: 50px;
+  //gap: 30px 45px;
+  //max-width: 230px;
 
   &__item {
 
@@ -14,7 +15,7 @@
     @extend %font;
     padding: 0;
     position: relative;
-    font-size: f.getREM(15);
+    font-size: f.getREM(17);
     letter-spacing: .75px;
     border: none;
     background-color: transparent;
@@ -44,4 +45,4 @@
   }
 }
 
-@import 'tab-panel-media';
+//@import 'tab-panel-media';
