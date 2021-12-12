@@ -1,3 +1,4 @@
+@use '~@scss-vars/colors.scss' as c;
 @use '~@scss-utils/functions' as f;
 
 .nav-panel {
@@ -5,16 +6,26 @@
   &__list {
     display: flex;
     width: 100%;
-    gap: 25px;
+    gap: 66px;
     height: 100%;
     align-items: center;
   }
 
   &__item {
+    display: flex;
     transition: color .5s ease-in-out;
 
     &:hover {
       color: white;
+    }
+
+    &--auth {
+      display: flex;
+      gap: 5px;
+
+      & > .nav-panel__text {
+        color: #656565;
+      }
     }
   }
 
@@ -25,38 +36,20 @@
   }
 
   &__text {
-    display: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: f.getREM(15);
+    line-height: f.getREM(30);
+    color: #919191;
   }
 
   &__count {
     @extend %font;
+    color: c.$ACTIVE_FONT_COLOR;
     font-size: f.getREM(15);
     letter-spacing: 0.38px;
   }
 
   &__icon {
-    display: block;
-
-    &--heart {
-      width: 16px;
-      height: 14px;
-      color: white;
-      background-image: url('~@icons/heart.svg');
-    }
-
-    &--cart {
-      width: 16px;
-      height: 16px;
-      background-image: url('~@icons/shopcart.svg');
-    }
-
-    &--logout {
-      width: 20px;
-      height: 17px;
-      background-image: url('~@icons/logout.webp');
-    }
-
-    background-size: contain;
-    background-repeat: no-repeat;
+    display: none;
   }
 }

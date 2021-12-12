@@ -1,8 +1,9 @@
 @use '~@scss-vars/colors' as c;
 
 .header {
-  height: 40px;
-  background-color: c.$MAIN_DARK_COLOR;
+  display: flex;
+  justify-content: center;
+  height: 60px;
   color: c.$MAIN_FONT_COLOR;
 
   &__wrap {
