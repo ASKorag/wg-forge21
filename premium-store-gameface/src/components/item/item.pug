@@ -5,7 +5,7 @@ mixin item(item)
   a(class=[attributes.class, 'item', '_link'] href=href)
     img(class=['item__img'
       , `item__img--${type}`, size ===
-      'big' ? 'item__img--big' : '', '_img'] width='50%' height='50%' src=require(`@images/${type}/${image}.webp`) alt=image)
+      'big' ? 'item__img--big' : '', '_img'] width='50%' height='50%' src=require(`@images/${type}/${image}.png`) alt=image)
     .item__content
       h2.item__descr
         if (type === 'vehicle')

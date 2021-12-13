@@ -75,6 +75,9 @@ module.exports = {
       {
         test: /\.(jpg|png|webp)$/, // search graphic files
         type: 'asset/resource', // use default webpack resource loader
+        generator: {
+          filename: 'assets/images/[name][ext]'
+        }
       },
       {
         test: /\.(ttf|woff|woff2)$/, // search fonts files
