@@ -2,20 +2,29 @@
 @use '~@scss-vars/sizes' as s;
 
 .goods {
-  background-color: c.$MAIN_BG_COLOR;
+  display: flex;
+  justify-content: center;
 
   &__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: s.$GRID_GAP;
-    grid-auto-flow: dense;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
   }
 
   &__list-item {
-    height: 160px;
+    width: calc(1197px / 4);
+    height: 299px;
+    background-color: rgba(0, 0, 0, .21);
+    margin-bottom: 1px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+    }
 
     &--big {
-      grid-column: span 2;
+      width: calc(1199px / 2);
     }
   }
 
@@ -24,4 +33,4 @@
   }
 }
 
-@import 'goods-media';
+//@import 'goods-media';

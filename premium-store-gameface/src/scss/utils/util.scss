@@ -8,7 +8,11 @@
 ._link {
   display: block;
   text-decoration: none;
-  color: inherit;
+  color: #ccc;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 ._list {

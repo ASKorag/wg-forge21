@@ -13,8 +13,13 @@
 @import '~@components/categories/categories.scss';
 @import '~@components/tab-panel/tab-panel.scss';
 
+@import '~@components/goods/goods.scss';
+@import '~@components/item/item.scss';
+@import '~@components/button/button.scss';
+
 body {
   background-color: c.$MAIN_DARK_COLOR;
+  height: auto;
 }
 
 .main {

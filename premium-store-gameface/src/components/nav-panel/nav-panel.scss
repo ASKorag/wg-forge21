@@ -2,13 +2,14 @@
 @use '~@scss-utils/functions' as f;
 
 .nav-panel {
+  width: 460px;
 
   &__list {
     display: flex;
     width: 100%;
-    gap: 66px;
     height: 100%;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__item {
@@ -21,9 +22,9 @@
 
     &--auth {
       display: flex;
-      gap: 5px;
 
       & > .nav-panel__text {
+        margin: 0 5px;
         color: #656565;
       }
     }
@@ -32,7 +33,12 @@
   &__link {
     display: flex;
     align-items: center;
-    gap: 5px;
+
+    &:hover {
+      .nav-panel__text {
+        color: white;
+      }
+    }
   }
 
   &__text {
@@ -40,10 +46,12 @@
     font-size: f.getREM(15);
     line-height: f.getREM(30);
     color: #919191;
+    transition: color 0.3s ease-in-out;
   }
 
   &__count {
     @extend %font;
+    margin-left: 5px;
     color: c.$ACTIVE_FONT_COLOR;
     font-size: f.getREM(15);
     letter-spacing: 0.38px;

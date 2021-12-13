@@ -11,10 +11,12 @@
   }
 
   &__tab-panel {
-    align-self: flex-end;
+    width: 433px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+
+    align-self: flex-end;
+    justify-content: space-between;
   }
 
   &__link {
@@ -22,6 +24,12 @@
     width: 185px;
     height: 98px;
     background-image: url('~@images/logo-wot-big.png');
+  }
+}
+
+@media (max-width: 1200px) {
+  .categories {
+    background-color: green;
   }
 }
 

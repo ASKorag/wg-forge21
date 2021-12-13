@@ -3,11 +3,18 @@
 
 .btn {
   @extend %font;
-  width: 160px;
-  height: 60px;
+  width: 100px;
+  height: 40px;
   background-color: c.$MAIN_BTN_COLOR;
-  font-size: f.getREM(17);
+  font-size: f.getREM(12);
+  line-height: f.getREM(18);
   letter-spacing: .85px;
   color: c.$ACTIVE_FONT_COLOR;
   border: none;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #8b8865;
+  }
 }

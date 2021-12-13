@@ -13,15 +13,15 @@
 
   &__icon {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 23px;
+    height: 23px;
     margin-right: 10px;
-    background-image: url('~@icons/logo.webp');
+    background-image: url('~@icons/wg.png');
   }
 
   &__text {
     @extend %font;
-    font-size: f.getREM(12);
+    font-size: f.getREM(16);
     letter-spacing: 1.2px;
   }
 }

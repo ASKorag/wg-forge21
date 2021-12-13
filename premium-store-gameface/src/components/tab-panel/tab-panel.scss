@@ -4,12 +4,6 @@
 .tab-panel {
   display: flex;
   gap: 50px;
-  //gap: 30px 45px;
-  //max-width: 230px;
-
-  &__item {
-
-  }
 
   &__btn {
     @extend %font;
@@ -30,19 +24,19 @@
     &--active {
       color: c.$ACTIVE_FONT_COLOR;
 
-      &:after {
+      .tab-panel__underline {
         position: absolute;
-        content: '';
         display: block;
-        width: calc(100% + 10px);
-        top: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
+        width: 110%;
         height: 4px;
         background-color: white;
+        left: 50%;
+        top: 140%;
+        transform: translateX(-50%);
       }
     }
   }
+
 }
 
 //@import 'tab-panel-media';

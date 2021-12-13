@@ -1,6 +1,6 @@
 @mixin flag($country) {
   &--#{$country} {
-    background-image: url('~@icons/countries/#{$country}.webp');
+    background-image: url('~@icons/country/#{$country}.png');
   }
 }
 
