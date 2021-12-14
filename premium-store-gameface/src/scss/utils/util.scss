@@ -1,8 +1,7 @@
 ._wrap {
-  box-sizing: border-box;
-  padding: 0 15px;
   height: 100%;
-  width: 1200px;
+  width: var(--wrap-width);
+  margin: 0 15px;
 }
 
 ._link {
@@ -13,12 +12,6 @@
   &:hover {
     cursor: pointer;
   }
-}
-
-._list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
 }
 
 ._img {

@@ -2,19 +2,19 @@
 @use '~@scss-utils/functions' as f;
 
 .tab-panel {
-  display: flex;
-  gap: 50px;
-
   &__btn {
     @extend %font;
     padding: 0;
     position: relative;
     font-size: f.getREM(17);
     letter-spacing: .75px;
+    line-height: 35px;
     border: none;
     background-color: transparent;
     color: c.$MAIN_FONT_COLOR;
     transition: color 0.5s ease-in-out;
+    margin-left: 50px;
+    margin-bottom: 10px;
 
     &:hover {
       cursor: pointer;
@@ -23,17 +23,7 @@
 
     &--active {
       color: c.$ACTIVE_FONT_COLOR;
-
-      .tab-panel__underline {
-        position: absolute;
-        display: block;
-        width: 110%;
-        height: 4px;
-        background-color: white;
-        left: 50%;
-        top: 140%;
-        transform: translateX(-50%);
-      }
+      border-bottom: 4px solid white;
     }
   }
 

@@ -1,0 +1,19 @@
+@use '~@scss-vars/breakpoints.scss' as b;
+
+@media (max-width: b.$UP_WRAP) {
+  :root {
+    --wrap-width: 85vw;
+  }
+}
+
+@media (max-width: b.$THREE_ITEMS) {
+  :root {
+    --items-on-line: 3;
+  }
+}
+
+@media (max-width: b.$TWO_ITEMS) {
+  :root {
+    --items-on-line: 2;
+  }
+}

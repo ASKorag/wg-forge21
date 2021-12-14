@@ -1,7 +1,9 @@
 @use '~@scss-vars/breakpoints' as b;
 
-@media (min-width: b.$DISPLAY_480) {
+@media (max-width: b.$TWO_ITEMS) {
   .categories {
-    min-height: 50px;
+    &__tab-panel {
+      width: 300px;
+    }
   }
 }

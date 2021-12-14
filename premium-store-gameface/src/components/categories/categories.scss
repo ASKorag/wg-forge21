@@ -1,36 +1,29 @@
 .categories {
   display: flex;
   justify-content: center;
-  min-height: 123px;
+  height: 123px;
 
   &__wrap {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 35px;
-    //padding: 13px 15px 16px;
   }
 
   &__tab-panel {
-    width: 433px;
+    //width: 433px;
     display: flex;
     flex-wrap: wrap;
-
     align-self: flex-end;
-    justify-content: space-between;
+    //justify-content: space-between;
+    margin-bottom: 10px;
   }
 
   &__link {
     display: block;
     width: 185px;
     height: 98px;
+    align-self: center;
     background-image: url('~@images/logo-wot-big.png');
   }
 }
 
-@media (max-width: 1200px) {
-  .categories {
-    background-color: green;
-  }
-}
-
-//@import 'categories-media';
+@import 'categories-media';

@@ -1,0 +1,20 @@
+@use '~@scss-vars/breakpoints' as b;
+@use '~@scss-utils/functions' as f;
+
+@media (max-width: b.$TWO_ITEMS) {
+  .nav-panel {
+    width: 250px;
+
+    &__count {
+      font-size: f.getREM(20);
+    }
+
+    &__text {
+      display: none;
+    }
+
+    &__icon {
+      display: block;
+    }
+  }
+}

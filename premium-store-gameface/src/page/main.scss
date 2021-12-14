@@ -27,3 +27,11 @@ body {
   background-image: url('~@images/bg.jpg');
   background-repeat: no-repeat;
 }
+
+:root {
+  --gap: 1px;
+  --wrap-width: 62.5vw;
+  --items-on-line: 4;
+}
+
+@import 'main-media';
