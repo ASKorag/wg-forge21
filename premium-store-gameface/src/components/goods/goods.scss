@@ -7,22 +7,4 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
-
-  &__list-item {
-    //  ITEM_WIDTH = [WRAP_WIDTH - GAP * (ITEM_ON_LINE - 1)] / ITEM_ON_LINE
-    width: calc((var(--wrap-width) - var(--gap) * (var(--items-on-line) - 1)) / var(--items-on-line));
-    height: 300px;
-    margin-bottom: var(--gap);
-    background-color: rgba(0, 0, 0, .21);
-    transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    &--big {
-      // 2 * ITEM_WIDTH + GAP
-      width: calc(2 * ((var(--wrap-width) - var(--gap) * (var(--items-on-line) - 1)) / var(--items-on-line)) + var(--gap));
-    }
-  }
 }

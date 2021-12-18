@@ -87,5 +87,4 @@ include /item/item
 div.goods
   .goods__list._list._wrap
     each item in items
-      div(class=['goods__list-item', item.size === 'big' ? 'goods__list-item--big' : ''])
-        +item(item).goods__item
+      +item(item).goods__item
